@@ -23,6 +23,16 @@ public class User {
     // Default constructor
     public User() {}
 
+    // All-args constructor
+    public User(Long id, String name, String email, String username, boolean active, int age) {
+        this.id = id;
+        this.name = name;
+        this.email = email;
+        this.username = username;
+        this.active = active;
+        this.age = age;
+    }
+
     // Getters and Setters
     public Long getId() {
         return id;

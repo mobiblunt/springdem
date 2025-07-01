@@ -5,8 +5,9 @@ import org.springframework.web.bind.annotation.*;
 import com.example.models.User;
 import com.example.repository.UserRepository;
 import java.util.List;
+import org.springframework.stereotype.Controller;
 
-@RestController
+@Controller
 @RequestMapping("/api")
 public class DemoController {
 
@@ -48,5 +49,13 @@ public class DemoController {
     @DeleteMapping("/users/{id}")
     public void deleteUser(@PathVariable Long id) {
         userRepository.deleteById(id);
+    }
+
+    // View to display users
+    @GetMapping("/view-users")
+    public String viewUsers(org.springframework.ui.Model model) {
+        List<User> users = userRepository.findAll();
+        model.addAttribute("users", users);
+        return "users";
     }
 }
